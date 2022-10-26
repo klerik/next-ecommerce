@@ -10,7 +10,7 @@ const data = {
       brand: "Viktoria Handmade",
       rating: 4.5,
       numReviews: 8,
-      countInStock: 8,
+      countInStock: 2,
       description:
         "Knotted by hand, this adjustable macramé bracelet by Rituu features the charisma of soothing blue chalcedony. ",
     },
