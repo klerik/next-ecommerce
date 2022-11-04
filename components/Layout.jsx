@@ -1,11 +1,16 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { Store } from "../context/store";
 
 const Layout = ({ title, children }) => {
+  const [cartItemCount, setCartItemCount] = useState(0);
   const { state } = useContext(Store);
   const { cart } = state;
+
+  useEffect(() => {
+    setCartItemCount(cart.cartItems.reduce((a, c) => a + c.quantity, 0));
+  }, [cart.cartItems]);
   return (
     <>
       <Head>
@@ -24,9 +29,9 @@ const Layout = ({ title, children }) => {
               <Link href="/cart">
                 <a className="p-2">
                   Cart
-                  {cart.cartItems.length > 0 && (
+                  {cartItemCount.length > 0 && (
                     <span className="ml-1 rounded-full bg-red-600 px-2 py-1 text-xs font-bold text-white">
-                      {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
+                      {cartItemCount}
                     </span>
                   )}
                 </a>
